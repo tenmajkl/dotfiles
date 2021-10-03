@@ -9,6 +9,7 @@ alias icefox="open -a icefox"
 alias cord="open -a discord\ canary"
 
 alias mhw="cd minehub/web"
+alias mhn="cd minehub/web-next"
 alias pa="php artisan"
 alias pl="php lemonade"
 alias code="nvim" # Lets troll modern dEvElOpErS Lol imagine using gui to edit text XDDDDDDDD
@@ -17,6 +18,7 @@ alias ni="nvim"
 alias n="nvim"
 alias phs="php -S localhost:8000"
 alias psh="php -a"
-
-export PATH=$PATH":$HOME/bin"
-export PATH="$PATH:/Applications/VLC.app/Contents/MacOS"
+alias finder="open ."
+# mac dock
+alias dhide="defaults write com.apple.dock autohide -bool true && killall Dock"
+alias dshow="defaults write com.apple.dock autohide -bool false && killall Dock"
