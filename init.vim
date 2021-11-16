@@ -1,7 +1,10 @@
-" =======================
+"
+"=======================
 " TEN MAJKL NEOVIM CONFIG
 "
 " Just neovim configuration file, my goal was to create tool better than vS cOdE that runs in TERMINAL
+" Its basicaly all the time WIP
+" And its mess
 "
 " The best editors are (neo)?vi(m)? and emacs
 "
@@ -17,7 +20,6 @@ set shiftwidth=4
 set expandtab
 set number
 set cursorline
-set spell
 set nowrap
 set title
 set shortmess+=c
@@ -27,15 +29,23 @@ set hlsearch
 set mouse=a " Wait what
 set fillchars+=vert:\ 
 au Bufenter *.php set comments=sl:/*,mb:\ *,elx:*/
-au Bufenter *.c,*.h set comments=sl:/*,mb:\ \|,elx:*/
+au Bufenter *.c,*.h set comments=sl:/*,mb:\ *,elx:*/
 set fileencodings=utf-8
 set backspace=indent,eol,start
 filetype indent on
 language en_US
 set autowrite
 
-" Markdown
-let g:mkdp_auto_start=1
+function WriteCFile()
+    put ='#include<stdio.h>'
+    put =''
+    put ='int main()'
+    put ='{'
+    put ='  return 0;'
+    put ='}'
+endfunction
+
+au BufNewFile *.c call WriteCFile()
 
 " python
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -44,7 +54,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:nvim_tree_auto_open = 1
 let g:nvim_tree_tab_open = 1
 let g:nvim_tree_icons = {
-    \ 'default': 'Óėí'
+    \ 'default': '',
     \}
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.DS_Store', 'vendor']
@@ -55,10 +65,8 @@ call plug#begin()
 Plug 'noahfrederick/vim-laravel'
 Plug 'jwalton512/vim-blade'
 Plug 'simeji/winresizer'
-Plug 'monsonjeremy/onedark.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'mattn/emmet-vim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -71,6 +79,7 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'leafOfTree/vim-matchtag'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'Yggdroot/indentLine'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 hi Normal guibg=NONE ctermbg=NONE
@@ -80,6 +89,8 @@ let g:user_emmet_leader_key=','
 
 nmap s :w<cr>
 vmap <C-c> "*y<cr>
+
+map ~~ ZZ
 
 nmap ## :VCoolor<cr>
 
@@ -94,8 +105,6 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 autocmd Bufenter *.py inoremap #= =================
 autocmd Bufenter *.py inoremap ## """""" <left><left><left><left>
-
-
 
 let g:vim_matchtag_enable_by_default = 1
 let g:vim_matchtag_files = '*.html,*.xml,*.js,*.php,*vue'
@@ -117,6 +126,9 @@ nmap fh <cmd>Telescope help_tags theme=get_dropdown<cr>
 " Presence
 let g:presence_blacklist = [$HOME."/minehub/web", $HOME."/minehub/web-next"]
 let g:presence_neovim_image_text = "Vi, Vim, Neovim and emacs are only editors."
+let g:presence_editing_text = "📄 %s"
+let g:presence_file_explorer_text  = "📁 %s"
+let g:presence_workspace_text = "📁 %s"
 
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
@@ -125,27 +137,15 @@ nnoremap <silent>tn :BufferLineCycleNext<CR>
 nnoremap <silent>tp :BufferLineCyclePrev<CR>
 nnoremap <silent> gb :BufferLinePick<CR>
 
-let g:airline_powerline_fonts = 1
-
 set termguicolors
 
 " Bufferline, nice tabs
 lua << EOF
 require("bufferline").setup{
     options = {
-        offsets = {{filetype = "NvimTree", text = "File Explorer" , text_align = "left"}},    
+        offsets = {{filetype = "NvimTree", text = "File Explorer" , text_align = "left"}},   
     }
 }
 EOF
 
-function Replace()
-    let search = expand("<cword>")
-    let replace = input("$")
-    let command = ":%s/".search."/".replace
-    execute command
-endfunction
-
-nmap r :call Replace()<Cr>
-
-" ONEDARK IS BEST SCHEME CHANGE MY MIND
-lua require('onedark').setup()" 
+colorscheme gruvbox
