@@ -1,0 +1,43 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@media (-moz-mac-big-sur-theme: 1) {
+        hbox.titlebar-buttonbox-container { visibility: collapse !important; }
+      
+        
+
+        .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] 
+        { visibility:  collapse}
+}
+
+#main-window {
+        border-radius: 0 !important;
+}
+
+* {
+        color: #ebdbb2
+}
+
+#TabsToolbar .tabs-newtab-button,
+#TabsToolbar .tabbrowser-tab,
+#TabsToolbar .tabbrowser-tab .tab-stack,
+#TabsToolbar .tabbrowser-tab .tab-background,
+#TabsToolbar .tabbrowser-tab .tab-content {
+        border-radius: 0px !important;
+        margin-bottom: 0px !important;
+}
+
+#TabsToolbar {
+        background-color: #1d2021 !important;
+}
+
+#nav-bar {
+        background-color: #282828 !important;
+}
+
+#TabsToolbar .tabbrowser-tab .tab-content[selected="true"], 
+#TabsToolbar .tabbrowser-tab .tab-content:hover  {
+	background-color: #282828 !important;
+}
+
+#urlbar-background {
+        background-color: #282828 !important;
+}
