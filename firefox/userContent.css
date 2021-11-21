@@ -1,43 +1,18 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-@media (-moz-mac-big-sur-theme: 1) {
-        hbox.titlebar-buttonbox-container { visibility: collapse !important; }
-      
-        
-
-        .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] 
-        { visibility:  collapse}
-}
-
-#main-window {
-        border-radius: 0 !important;
-}
-
-* {
-        color: #ebdbb2
-}
-
-#TabsToolbar .tabs-newtab-button,
-#TabsToolbar .tabbrowser-tab,
-#TabsToolbar .tabbrowser-tab .tab-stack,
-#TabsToolbar .tabbrowser-tab .tab-background,
-#TabsToolbar .tabbrowser-tab .tab-content {
-        border-radius: 0px !important;
-        margin-bottom: 0px !important;
-}
-
-#TabsToolbar {
-        background-color: #1d2021 !important;
-}
-
-#nav-bar {
+@-moz-document url("about:home"), url("about:newtab") {
+    .activity-stream {
         background-color: #282828 !important;
-}
-
-#TabsToolbar .tabbrowser-tab .tab-content[selected="true"], 
-#TabsToolbar .tabbrowser-tab .tab-content:hover  {
-	background-color: #282828 !important;
-}
-
-#urlbar-background {
+    }
+    .logo-and-wordmark {
+        visibility: hidden;
+    }
+    .search-handoff-button {
         background-color: #282828 !important;
+    }
+    .search-wrapper.fake-focus:not(.search.disabled) .search-handoff-button {
+      border: 1px solid #928374 !important;
+      box-shadow: 0 0 0 0px #928374 !important;
+    }
+    .icon-settings {
+        visibility: hidden !important;
+    }
 }
