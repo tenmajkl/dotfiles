@@ -1,0 +1,29 @@
+{
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "languageserver": {
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"]
+        },
+        "dockerfile": {
+          "command": "docker-langserver",
+          "filetypes": ["dockerfile"],
+          "args": ["--stdio"]
+        },
+        "purescript": {
+          "command": "purescript-language-server",
+          "args": ["--stdio"],
+          "filetypes": ["purescript"],
+          "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+        },
+        "phpactor": {
+            "command": "phpactor",
+            "args": ["language-server"],
+            "trace.server": "verbose",
+            "filetypes": ["php"]
+        }
+    },
+    "svelte.enable-ts-plugin": true
+}
